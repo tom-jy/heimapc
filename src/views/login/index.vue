@@ -8,7 +8,7 @@
       </div>
       <!-- <el-form-item></el-form-item> -->
       <!-- 表单容器 -->
-      <el-form :model="loginForm" :rules="rules">
+      <el-form :model="loginForm" :rules="rules" ref="loginForm">
         <el-form-item style="padding-top:20px" prop="mobile">
           <!-- 表单域 -->
           <el-input placeholder="请输入手机号" v-model="loginForm.mobile"></el-input>
@@ -21,7 +21,7 @@
           <el-checkbox v-model="loginForm.checked">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button style="width:100%" type="primary">登录</el-button>
+          <el-button @click="loginOk" style="width:100%" type="primary">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -30,6 +30,23 @@
 
 <script>
 export default {
+  methods: {
+    loginOk () {
+      // 第一种方法：回调函数
+      // this.$refs.loginForm.validate(function (isOK) {
+      //   if (isOK) {
+      //     console.log('校验成功')
+      //   } else {
+      //     console.log('校验失败')
+      //   }
+      // })
+
+      // 第二种方法：promise
+      this.$refs.loginForm.validate().then(() => {
+        alert('登录成功')
+      })
+    }
+  },
   data () {
     return {
       loginForm: {
@@ -61,7 +78,9 @@ export default {
         checked: [
           {
             validator: function (rules, value, callback) {
-              value ? callback() : callback(new Error('您必须同意我们的霸王条款'))
+              value
+                ? callback()
+                : callback(new Error('您必须同意我们的霸王条款'))
             }
           }
         ]
