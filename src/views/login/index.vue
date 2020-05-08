@@ -93,8 +93,14 @@ export default {
         }).then(result => {
           // 前端持久化,将钥匙放进兜里,即把token放于本地缓存
           window.localStorage.setItem('use-token', result.data.data.token)
-        }).catch(() => {
 
+          // 编程式导航：跳到home页
+          this.$router.push('/home')
+        }).catch(() => {
+          // 第一种,传入一个对象{提示信息+提示类型}
+          // this.$message({ message: '账号或密码输入错误', type: 'error' })
+          // 第二种方法
+          this.$message.error('账号或密码输入错误')
         })
       })
     }
