@@ -38,7 +38,33 @@ export default {
         checked: false
       },
       rules: {
-
+        mobile: [
+          {
+            required: true,
+            message: '您的手机号码不能为空'
+          },
+          {
+            pattern: /^1[3-9]\d{9}$/,
+            message: '您的手机号格式错误'
+          }
+        ],
+        code: [
+          {
+            required: true,
+            message: '您的验证码不能为空'
+          },
+          {
+            pattern: /^\d{6}$/,
+            message: '您的验证码格式错误'
+          }
+        ],
+        checked: [
+          {
+            validator: function (rules, value, callback) {
+              value ? callback() : callback(new Error('您必须同意我们的霸王条款'))
+            }
+          }
+        ]
       }
     }
   }
