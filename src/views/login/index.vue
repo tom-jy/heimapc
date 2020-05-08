@@ -91,7 +91,8 @@ export default {
           data: { ...this.loginForm, checked: null }, // body参数，常用于post/put/patch
           method: 'post' // 请求类型，post/get/delete/put/patch
         }).then(result => {
-          console.log(result.data)
+          // 前端持久化,将钥匙放进兜里,即把token放于本地缓存
+          window.localStorage.setItem('use-token', result.data.data.token)
         }).catch(() => {
 
         })
