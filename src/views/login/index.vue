@@ -30,28 +30,12 @@
 
 <script>
 export default {
-  methods: {
-    loginOk () {
-      // 第一种方法：回调函数
-      // this.$refs.loginForm.validate(function (isOK) {
-      //   if (isOK) {
-      //     console.log('校验成功')
-      //   } else {
-      //     console.log('校验失败')
-      //   }
-      // })
 
-      // 第二种方法：promise
-      this.$refs.loginForm.validate().then(() => {
-        alert('登录成功')
-      })
-    }
-  },
   data () {
     return {
       loginForm: {
-        mobile: '',
-        code: '',
+        mobile: '13911111111',
+        code: '246810',
         checked: false
       },
       rules: {
@@ -85,6 +69,33 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    loginOk () {
+      // 第一种方法：回调函数
+      // this.$refs.loginForm.validate(function (isOK) {
+      //   if (isOK) {
+      //     console.log('校验成功')
+      //   } else {
+      //     console.log('校验失败')
+      //   }
+      // })
+
+      // 第二种方法：promise
+      this.$refs.loginForm.validate().then(() => {
+        // alert('登录成功')
+        this.$axios({
+          url: 'authorizations', // 请求地址
+          // parmas:{}, //地址参数，也叫get参数
+          data: { ...this.loginForm, checked: null }, // body参数，常用于post/put/patch
+          method: 'post' // 请求类型，post/get/delete/put/patch
+        }).then(result => {
+          console.log(result.data)
+        }).catch(() => {
+
+        })
+      })
     }
   }
 }
