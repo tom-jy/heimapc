@@ -121,7 +121,7 @@ export default {
     height: 100%;
     position: absolute;
     background-size: cover;
-    background-image: url("../../assets/img/bak.jpg");
+    background-image: url("../../assets/img/login_bg.jpg");
     // filter: blur(1px);//毛玻璃
   }
   .login_card {

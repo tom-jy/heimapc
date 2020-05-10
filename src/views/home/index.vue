@@ -2,7 +2,8 @@
   <!-- 外部容器 -->
   <el-container>
     <!-- 侧边栏容器 -->
-    <el-aside>
+    <el-aside style="width: 230px">
+       <layout-said></layout-said>
       <h1>侧边栏</h1>
     </el-aside>
     <!-- 右侧区域 -->
@@ -20,7 +21,12 @@
 </template>
 
 <script>
-export default {}
+import layoutAsaid from '@/components/home/layout-said'
+export default {
+  components: {
+    'layout-said': layoutAsaid
+  }
+}
 </script>
 
 <style>
