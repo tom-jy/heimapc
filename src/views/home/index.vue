@@ -22,13 +22,10 @@
 </template>
 
 <script>
-import layoutAsaid from '@/components/home/layout-said'
-import layoutHeader from '@/components/home/layout-header'
+// import layoutAsaid from '@/components/home/layout-said'
+// import layoutHeader from '@/components/home/layout-header'
 export default {
-  components: {
-    'layout-said': layoutAsaid,
-    'layout-header': layoutHeader
-  }
+
 }
 </script>
 
