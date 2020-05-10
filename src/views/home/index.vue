@@ -10,6 +10,7 @@
     <el-container>
       <!-- 标题栏 -->
       <el-header>
+        <layout-header></layout-header>
         <h1>标题栏</h1>
       </el-header>
       <!-- 主要内容区域 -->
@@ -22,9 +23,11 @@
 
 <script>
 import layoutAsaid from '@/components/home/layout-said'
+import layoutHeader from '@/components/home/layout-header'
 export default {
   components: {
-    'layout-said': layoutAsaid
+    'layout-said': layoutAsaid,
+    'layout-header': layoutHeader
   }
 }
 </script>
