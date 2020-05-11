@@ -7,14 +7,14 @@
         <el-col class="right" :span="12">
             <el-row type="flex" justify="end" align="middle">
                 <img :src="userInfo.photo" alt="">
-                <el-dropdown>
+                <el-dropdown  @command="ClickMenu">
                     <span class="el-dropdown-link">{{userInfo.name}}
                          <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu>
-                         <el-dropdown-item>我的</el-dropdown-item>
-                         <el-dropdown-item>git</el-dropdown-item>
-                         <el-dropdown-item divided>退出</el-dropdown-item>
+                         <el-dropdown-item command="info">我的</el-dropdown-item>
+                         <el-dropdown-item command="git">git</el-dropdown-item>
+                         <el-dropdown-item divided command="out">退出</el-dropdown-item>
                     </el-dropdown-menu>
 
                 </el-dropdown>
@@ -29,6 +29,18 @@ export default {
   data () {
     return {
       userInfo: {}
+    }
+  },
+  methods: {
+    ClickMenu (command) {
+      if (command === 'info') {
+
+      } else if (command === 'git') {
+        window.location.href = 'https://github.com/tom-jy/heimapc'
+      } else {
+        window.localStorage.removeItem('use-token') // 删除token
+        this.$router.push('/login') // 编程式导航，回到登录页
+      }
     }
   },
   //   用钩子函数created获取用户信息
