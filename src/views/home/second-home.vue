@@ -1,6 +1,6 @@
 <template>
   <div class="second_home">
-    <el-carousel :interval="1000" type="card" height="500px">
+    <el-carousel :interval="2500" type="card" height="300px">
       <el-carousel-item v-for="item in list" :key="item">
         <img :src="item" alt="">
       </el-carousel-item>
@@ -26,7 +26,7 @@ export default {
 <style lang="less" scoped>
 .second_home {
   height: calc(100vh - 60px); //四则运算：calc(100vh - 60px) -号左右要间隔空格
-  background-image: url("http://img0.imgtn.bdimg.com/it/u=3362761179,559138149&fm=26&gp=0.jpg");
+  background-image: url("http://img0.imgtn.bdimg.com/it/u=3504977078,2591747000&fm=26&gp=0.jpg");
   background-size: cover;
 }
 </style>
