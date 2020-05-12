@@ -17,8 +17,10 @@
           <el-table-column prop="total_comment_count" label="总评论数"></el-table-column>
           <el-table-column prop="fans_comment_count" label="粉丝评论数"></el-table-column>
           <el-table-column label="操作">
-              <el-button size="small" type="text">修改</el-button>
-              <el-button size="small" type="text">删除</el-button>
+              <template slot-scope='obj'>
+                  <el-button size="small" type="text">修改评论</el-button>
+                  <el-button @click="CloseorOpen(obj.row)" size="small" type="text">{{ obj.row.comment_status ? '关闭' :'打开' }}评论</el-button>
+              </template>
           </el-table-column>
       </el-table>
   </el-card>
@@ -53,6 +55,25 @@ export default {
     // index 当前索引
     // 该函数需要一个返回值
       return cellValue ? '正常' : '关闭'
+    },
+    CloseorOpen (row) {
+      const mess = row.comment_status ? '关闭' : '打开'
+      this.$confirm(`是否 ${mess} 评论`, '提示').then(() => {
+        this.$axios({
+          url: '/comments/status',
+          method: 'PUT',
+          params: {
+            article_id: row.id
+          },
+          data: {
+            allow_comment: !row.comment_status
+          }
+        }).then(() => {
+          this.$message.success(` ${mess}成功`)
+        }).catch(() => {
+          this.$message.error(` ${mess}失败`)
+        })
+      })
     }
   },
 
