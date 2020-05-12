@@ -55,7 +55,7 @@ export default {
       // }
     }).then(result => {
       // 成功拿到钥匙之后，赋值给接收对象userInfo
-      this.userInfo = result.data.data // 最后去v-bind给页面
+      this.userInfo = result.data // 最后去v-bind给页面
     })
   }
 }

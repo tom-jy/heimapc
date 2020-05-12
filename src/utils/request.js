@@ -13,4 +13,13 @@ axios.interceptors.request.use(function (config) {
 // 失败时会有一个错误，直接reject错误即可，reject会进去axios的catch中
   return Promise.reject(error)
 })
+
+// 响应拦截
+axios.interceptors.response.use(function (response) {
+// 成功的时候执行，回调函数是一个响应体
+// 在拦截器中将需要的数据返回 将数据进行解构，将嵌套的data释放出来
+  return response.data ? response.data : {} // 有的响应没有响应数据
+}, function () {
+
+})
 export default axios // 导出

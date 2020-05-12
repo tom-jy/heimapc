@@ -92,7 +92,7 @@ export default {
           method: 'post' // 请求类型，post/get/delete/put/patch
         }).then(result => {
           // 前端持久化,将钥匙放进兜里,即把token放于本地缓存
-          window.localStorage.setItem('use-token', result.data.data.token)
+          window.localStorage.setItem('use-token', result.data.token)
 
           // 编程式导航：跳到home页
           this.$router.push('/home')
