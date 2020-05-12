@@ -46,13 +46,13 @@ export default {
   //   用钩子函数created获取用户信息
   created () {
     //   拿到钥匙，
-    const token = localStorage.getItem('use-token')
+    // const token = localStorage.getItem('use-token')
     this.$axios({
-      url: 'user/profile',
-      headers: {
-        // 把token放进headers中，格式要求前边要跟Bearer空格
-        Authorization: `Bearer ${token}`
-      }
+      url: 'user/profile'
+      // headers: {
+      //   // 把token放进headers中，格式要求前边要跟Bearer空格
+      //   Authorization: `Bearer ${token}`
+      // }
     }).then(result => {
       // 成功拿到钥匙之后，赋值给接收对象userInfo
       this.userInfo = result.data.data // 最后去v-bind给页面
