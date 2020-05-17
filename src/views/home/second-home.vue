@@ -1,7 +1,7 @@
 <template>
   <div class="second_home">
-    <el-carousel :interval="2500" type="card" height="300px">
-      <el-carousel-item v-for="item in list" :key="item">
+    <el-carousel :interval="10000" type="card" height="300px">
+      <el-carousel-item v-for="item in list" :key="item.index">
         <img :src="item" alt="">
       </el-carousel-item>
     </el-carousel>
@@ -13,10 +13,12 @@ export default {
   data () {
     return {
       list: [
-        'http://img4.imgtn.bdimg.com/it/u=3315838951,2925046183&fm=26&gp=0.jpg',
-        'http://img3.imgtn.bdimg.com/it/u=3519657295,2479789638&fm=26&gp=0.jpg',
-        'http://img5.imgtn.bdimg.com/it/u=1532844926,3671374399&fm=26&gp=0.jpg',
-        'http://img2.imgtn.bdimg.com/it/u=1629181125,3793485573&fm=26&gp=0.jpg'
+        'http://img0.imgtn.bdimg.com/it/u=3611563152,3081043588&fm=26&gp=0.jpg',
+        'http://img0.imgtn.bdimg.com/it/u=3611563152,3081043588&fm=26&gp=0.jpg',
+        'http://img0.imgtn.bdimg.com/it/u=3611563152,3081043588&fm=26&gp=0.jpg',
+        'http://img0.imgtn.bdimg.com/it/u=3611563152,3081043588&fm=26&gp=0.jpg',
+        'http://img0.imgtn.bdimg.com/it/u=3611563152,3081043588&fm=26&gp=0.jpg'
+
       ]
     }
   }
@@ -26,7 +28,7 @@ export default {
 <style lang="less" scoped>
 .second_home {
   height: calc(100vh - 60px); //四则运算：calc(100vh - 60px) -号左右要间隔空格
-  background-image: url("http://img0.imgtn.bdimg.com/it/u=3504977078,2591747000&fm=26&gp=0.jpg");
+  // background-image: url("http://img0.imgtn.bdimg.com/it/u=3504977078,2591747000&fm=26&gp=0.jpg");
   background-size: cover;
 }
 </style>

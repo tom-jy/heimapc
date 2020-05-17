@@ -1,7 +1,11 @@
 import axios from 'axios' // 引入
 import router from '@/router'
+import JsonBig from 'json-bigint' // 引入json-bigint包
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'// 引入baseURL请求地址
 
+axios.defaults.transformResponse = [function (data) {
+  return data ? JsonBig.parse(data) : {}
+}]
 // 注册请求拦截器
 axios.interceptors.request.use(function (config) {
   // 成功执行-回调函数，config是一个对象，代表所有请求信息
